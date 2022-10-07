@@ -19,8 +19,8 @@ namespace My.Scripts {
             var peds = World.GetNearbyPeds(Finder.PlayerPed, 10);
             var vehicles = World.GetNearbyVehicles(Finder.PlayerPed, 10);
             
-            BabahEntities(peds, 20, 5);
-            BabahEntities(vehicles, 15, 4);
+            BabahEntities(peds, 40, 10);
+            BabahEntities(vehicles, 30, 8);
         }
 
         private void BabahEntities<T>(T[] entities, float basePower, float verticalPower) where T : Entity {
