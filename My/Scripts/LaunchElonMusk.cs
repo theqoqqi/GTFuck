@@ -33,6 +33,7 @@ namespace My.Scripts {
                 return;
             }
             
+            ped.Ragdoll(10000);
             LaunchEntity(ped, 20, 50);
 
             if (RandomUtils.FlipCoin()) {
