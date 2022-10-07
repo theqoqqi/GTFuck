@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Windows.Forms;
 using GTA;
 using GTA.Math;
@@ -55,7 +56,9 @@ namespace My.Scripts {
             
             if (RandomUtils.FlipCoin()) {
                 tasks.DelayedTask(3, () => {
-                    vehicle.Explode();
+                    if (!vehicle.Passengers.Contains(Finder.PlayerPed)) {
+                        vehicle.Explode();
+                    }
                 });
             }
         }
