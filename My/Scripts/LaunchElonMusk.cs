@@ -56,7 +56,7 @@ namespace My.Scripts {
             
             if (RandomUtils.FlipCoin()) {
                 tasks.DelayedTask(3, () => {
-                    if (!vehicle.Passengers.Contains(Finder.PlayerPed)) {
+                    if (!vehicle.Passengers.Contains(Finder.PlayerPed) && Finder.PlayerPed != vehicle.Driver) {
                         vehicle.Explode();
                     }
                 });
