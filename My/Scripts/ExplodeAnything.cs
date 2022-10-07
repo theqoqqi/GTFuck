@@ -15,7 +15,7 @@ namespace My.Scripts {
         }
         
         private void Run() {
-            Finder.GetRandomVehicleNearPlayer(50)?.Explode();
+            Finder.GetRandomVehicleNearPlayer(50, p => p.IsOnScreen)?.Explode();
         }
     }
 }

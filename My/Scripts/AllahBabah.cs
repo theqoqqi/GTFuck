@@ -15,7 +15,11 @@ namespace My.Scripts {
         }
 
         private void Run() {
-            var radius = RandomUtils.NextFloat(3, 5);
+            Audio.PlaySoundAt(Finder.PlayerPed, "Monkey_Scream", "FBI_05_SOUNDS");
+            
+            Wait(3000);
+            
+            var radius = RandomUtils.NextFloat(10, 15);
             
             World.AddExplosion(Finder.PlayerPosition, ExplosionType.Barrel, radius, 0);
         }

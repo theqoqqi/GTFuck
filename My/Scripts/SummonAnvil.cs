@@ -23,10 +23,12 @@ namespace My.Scripts {
                 return;
             }
 
-            var height = RandomUtils.NextFloat(5, 15);
+            var height = RandomUtils.NextFloat(10, 15);
             var position = targetPosition.Value + Vector3.WorldUp * height;
 
-            World.CreateRandomVehicle(position, heading, IsModelCanBeAnvil);
+            var vehicle = World.CreateRandomVehicle(position, heading, IsModelCanBeAnvil);
+            
+            vehicle?.ApplyForce(Vector3.WorldDown * 30);
         }
 
         private static Vector3? GetRandomAnvilTargetPosition(Vector3 origin, float radius) {

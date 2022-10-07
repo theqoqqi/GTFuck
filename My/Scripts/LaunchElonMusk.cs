@@ -17,7 +17,7 @@ namespace My.Scripts {
 
         private void Run() {
             var ped = Finder.GetRandomPed(20, p => p.IsOnScreen);
-            var force = RandomUtils.NextFloat(5, 15);
+            var force = RandomUtils.NextFloat(20, 50);
             
             ped?.ApplyForce(Vector3.WorldUp * force);
         }
