@@ -2,6 +2,7 @@ using System;
 using System.Windows.Forms;
 using GTA;
 using GTA.Math;
+using Screen = GTA.UI.Screen;
 
 namespace My.Scripts {
     public class AllahBabah : Script {
@@ -22,6 +23,8 @@ namespace My.Scripts {
             
             BabahPeds(peds, 40, 10);
             BabahVehicles(vehicles, 30, 8);
+            
+            Screen.ShowHelpText("Раскидано " + peds.Length + " педов и " + vehicles.Length + " техники", 10000);
         }
         
         private void BabahPeds(Ped[] peds, float basePower, float verticalPower) {
