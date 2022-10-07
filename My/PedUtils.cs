@@ -4,10 +4,10 @@ using GTA;
 namespace My {
     public static class PedUtils {
 
-        public static void PerformSequence(Ped ped, Action<TaskInvoker> addTasks) {
+        public static void PerformSequence(Ped ped, Action<TaskSequence> addTasks) {
             TaskSequence sequence = new();
 
-            addTasks(sequence.AddTask);
+            addTasks(sequence);
 
             ped.Task.PerformSequence(sequence);
         }

@@ -22,12 +22,12 @@ namespace My.Scripts {
             var peds = World.GetNearbyPeds(playerPed, 40);
 
             foreach (var ped in peds) {
-                PedUtils.PerformSequence(ped, tasks => {
+                PedUtils.PerformSequence(ped, sequence => {
                     if (ped.IsInVehicle()) {
-                        tasks.LeaveVehicle();
+                        sequence.AddTask.LeaveVehicle();
                     }
                     
-                    tasks.FightAgainst(playerPed);
+                    sequence.AddTask.FightAgainst(playerPed);
                 });
             }
         }
