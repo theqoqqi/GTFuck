@@ -6,7 +6,7 @@ namespace My {
         
         private static readonly Random Random = new();
 
-        public static float NextFloat(float max) {
+        public static float NextFloat(float max = 1) {
             return NextFloat(0, max);
         }
 

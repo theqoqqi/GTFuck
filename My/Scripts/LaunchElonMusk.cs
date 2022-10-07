@@ -62,8 +62,9 @@ namespace My.Scripts {
 
         private static void LaunchEntity(Entity? vehicle, float minForce, float maxForce) {
             var force = RandomUtils.NextFloat(minForce, maxForce);
+            var planeImpulse = Vector3.RandomXY() * (force / 2 * RandomUtils.NextFloat());
 
-            vehicle?.ApplyForce(Vector3.WorldUp * force);
+            vehicle?.ApplyForce(Vector3.WorldUp * force + planeImpulse);
         }
     }
 }
