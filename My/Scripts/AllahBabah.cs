@@ -13,7 +13,12 @@ namespace My.Scripts {
 
         void OnKeyDown(object sender, KeyEventArgs e) {
             if (e.KeyCode == Keys.NumPad9) {
-                Babah();
+                try {
+                    Babah();
+                }
+                catch (Exception exception) {
+                    Screen.ShowHelpText("ОШИБКА: " + exception.Message);
+                }
             }
         }
 
