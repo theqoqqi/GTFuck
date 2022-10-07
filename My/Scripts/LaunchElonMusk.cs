@@ -1,12 +1,22 @@
+using System;
 using System.Windows.Forms;
 using GTA;
 using GTA.Math;
+using GTA.UI;
 
 namespace My.Scripts {
     public class LaunchElonMusk : Script {
 
+        private readonly TaskPipeline tasks = new TaskPipeline();
+
         public LaunchElonMusk() {
+            Tick += OnTick;
+            Interval = 100;
             KeyDown += OnKeyDown;
+        }
+
+        private void OnTick(object sender, EventArgs e) {
+            tasks.Tick();
         }
 
         void OnKeyDown(object sender, KeyEventArgs e) {
@@ -16,26 +26,36 @@ namespace My.Scripts {
         }
 
         private void LaunchPed() {
-            var ped = Finder.GetRandomPedNearPlayer(20, p => p.IsOnScreen);
+            var ped = Finder.GetRandomPedNearPlayer(50, p => p.IsOnScreen);
+
+            if (ped == null) {
+                GTA.UI.Screen.ShowHelpText("На экране не нашлось пешеходов", 5000);
+                return;
+            }
             
             LaunchEntity(ped, 20, 50);
 
             if (RandomUtils.FlipCoin()) {
-                Wait(5000);
-            
-                ped?.Task.UseParachute();
+                tasks.DelayedTask(5, () => {
+                    ped.Task.UseParachute();
+                });
             }
         }
 
         private void LaunchVehicle() {
-            var vehicle = Finder.GetRandomVehicleNearPlayer(20, v => v.IsOnScreen);
+            var vehicle = Finder.GetRandomVehicleNearPlayer(50, v => v.IsOnScreen);
             
-            LaunchEntity(vehicle, 50, 100);
+            if (vehicle == null) {
+                GTA.UI.Screen.ShowHelpText("На экране не нашлось техники", 5000);
+                return;
+            }
+
+            LaunchEntity(vehicle, 20, 50);
             
             if (RandomUtils.FlipCoin()) {
-                Wait(3000);
-            
-                vehicle?.Explode();
+                tasks.DelayedTask(3, () => {
+                    vehicle.Explode();
+                });
             }
         }
 
