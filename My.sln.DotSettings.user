@@ -4,5 +4,6 @@
   &lt;Assembly Path="E:\Program Files\GTAV\ScriptHookVDotNet2.dll" /&gt;&#xD;
   &lt;Assembly Path="C:\Users\user\My\Lib\ScriptHookVDotNet3.dll" /&gt;&#xD;
 &lt;/AssemblyExplorer&gt;</s:String>
+	<s:Boolean x:Key="/Default/UserDictionary/Words/=Babah/@EntryIndexedValue">True</s:Boolean>
 	<s:Boolean x:Key="/Default/UserDictionary/Words/=peds/@EntryIndexedValue">True</s:Boolean>
 	<s:Boolean x:Key="/Default/UserDictionary/Words/=Zaruba/@EntryIndexedValue">True</s:Boolean></wpf:ResourceDictionary>
