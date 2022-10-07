@@ -26,7 +26,7 @@ namespace My.Scripts {
         
         private void BabahPeds(Ped[] peds, float basePower, float verticalPower) {
             BabahEntities(peds, basePower, verticalPower, (ped, force) => {
-                ped.Euphoria.ApplyImpulse.Impulse = force;
+                ped.Ragdoll(10000);
             });
         }
         
