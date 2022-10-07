@@ -17,13 +17,15 @@ namespace My.Scripts {
         }
 
         private void OnTick(object sender, EventArgs e) {
+            enableAutoBabah &= Finder.PlayerPed.IsInVehicle();
+            
             if (enableAutoBabah) {
                 Babah();
             }
         }
 
         void OnKeyDown(object sender, KeyEventArgs e) {
-            if (e.KeyCode == Keys.E) {
+            if (e.KeyCode == Keys.E && Finder.PlayerPed.IsInVehicle()) {
                 enableAutoBabah = !enableAutoBabah;
 
                 Screen.ShowHelpText("Автобабах " + (enableAutoBabah ? "включен" : "выключен"));
