@@ -11,15 +11,38 @@ namespace My.Scripts {
 
         void OnKeyDown(object sender, KeyEventArgs e) {
             if (e.KeyCode == Keys.NumPad2) {
-                Run();
+                RandomUtils.RunRandomFunction(LaunchPed, LaunchVehicle);
             }
         }
 
-        private void Run() {
-            var ped = Finder.GetRandomPed(20, p => p.IsOnScreen);
-            var force = RandomUtils.NextFloat(20, 50);
+        private void LaunchPed() {
+            var ped = Finder.GetRandomPedNearPlayer(20, p => p.IsOnScreen);
             
-            ped?.ApplyForce(Vector3.WorldUp * force);
+            LaunchEntity(ped, 20, 50);
+
+            if (RandomUtils.FlipCoin()) {
+                Wait(5000);
+            
+                ped?.Task.UseParachute();
+            }
+        }
+
+        private void LaunchVehicle() {
+            var vehicle = Finder.GetRandomVehicleNearPlayer(20, v => v.IsOnScreen);
+            
+            LaunchEntity(vehicle, 50, 100);
+            
+            if (RandomUtils.FlipCoin()) {
+                Wait(3000);
+            
+                vehicle?.Explode();
+            }
+        }
+
+        private static void LaunchEntity(Entity? vehicle, float minForce, float maxForce) {
+            var force = RandomUtils.NextFloat(minForce, maxForce);
+
+            vehicle?.ApplyForce(Vector3.WorldUp * force);
         }
     }
 }

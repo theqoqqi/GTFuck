@@ -39,5 +39,9 @@ namespace My {
             
             return items[index];
         }
+
+        public static bool FlipCoin() {
+            return Random.NextDouble() < 0.5;
+        }
     }
 }

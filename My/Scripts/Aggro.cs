@@ -22,6 +22,8 @@ namespace My.Scripts {
             var peds = World.GetNearbyPeds(playerPed, 40);
 
             foreach (var ped in peds) {
+                ped.Task.ClearAll();
+                
                 PedUtils.PerformSequence(ped, sequence => {
                     if (ped.IsInVehicle()) {
                         sequence.AddTask.LeaveVehicle();

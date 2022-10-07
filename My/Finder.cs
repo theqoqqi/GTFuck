@@ -70,7 +70,7 @@ namespace My {
         /**
          * Рандомный пед рядом с игроком
          */
-        public static Ped? GetRandomPed(float radius, Func<Ped, bool>? filter = null) {
+        public static Ped? GetRandomPedNearPlayer(float radius, Func<Ped, bool>? filter = null) {
             return GetRandomPed(PlayerPed, radius, filter);
         }
 
