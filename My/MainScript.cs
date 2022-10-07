@@ -94,9 +94,9 @@ namespace My {
             Entity? targetEntity = null;
             
             RandomUtils.RunRandomFunction(() => {
-                targetEntity = Finder.GetRandomVehicle(origin, radius);
+                targetEntity = Finder.GetRandomVehicle(origin, radius, p => p.IsOnScreen);
             }, () => {
-                targetEntity = Finder.GetRandomPed(origin, radius);
+                targetEntity = Finder.GetRandomPed(origin, radius, p => p.IsOnScreen);
             });
 
             return targetEntity?.Position;
